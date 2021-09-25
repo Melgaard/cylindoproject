@@ -2,7 +2,6 @@ import './App.css';
 import {
 	Component
 } from "react";
-// import ReactDOM from "react-dom";
 
 import { Archibald } from './connection/products';
 
@@ -11,19 +10,26 @@ class App extends Component {
 		super(props);
 		this.state = { 
 			image: null,
-			// currImage: 1,
 		};
 	}
 
 	currImage = 1;
 	startX = 0;
-	imageDictionary = {}; //TODO: Preload dictionary with all the images to give a smooth first rotation
+	imageDictionary = {};
 
 	async componentDidMount() {
-		this.updateImage(this.currImage)
+		this.cacheImages();
+		this.updateImage(this.currImage);
 	}
 
-	//TODO: image caching
+	cacheImages() {
+		for (let i = 1; i <= 32; i++) {
+			Archibald(i).then((img) => {
+				this.imageDictionary[i] = img;
+			})
+		}
+	}
+
 	async updateImage(imageNumber) {
 		//If image is cached already, use it.
 		if (this.imageDictionary[imageNumber]) {
