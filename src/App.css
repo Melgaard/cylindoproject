@@ -9,20 +9,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.image {
-  height: 40vmin;
-  pointer-events: none;
-  user-select: none;
-}
-
-.dragWrapper {
-	position: relative;
-}
-
-.dragElem {
-	height: 560px;
-	width: 560px;
-	position: absolute;
-	z-index: 2;
-}
