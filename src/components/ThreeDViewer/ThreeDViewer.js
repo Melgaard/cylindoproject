@@ -46,6 +46,7 @@ class ThreeDViewer extends Component {
 			return;
 		}
 
+		//Get image, cache it and use it
 		const img = await GetProductFrames(this.product, imageNumber);
 		this.imageDictionary[imageNumber] = img;
 		this.setState({ image: img });
